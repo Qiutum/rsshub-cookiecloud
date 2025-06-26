@@ -77,7 +77,8 @@ async function handler(ctx) {
     };
 }
 
-
-setTimeout(async () => await createCookieCloudSyncJob(_config, false), 10);
+if (process.env.NODE_ENV == 'production') {
+    setTimeout(async () => await createCookieCloudSyncJob(_config, false), 10);
+}
 
 logger.info('CookieCloud loaded.');

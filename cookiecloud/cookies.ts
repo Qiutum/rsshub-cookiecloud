@@ -15,7 +15,7 @@ export type CookieMap = Map<string, CookieCloudQueryParam[]>;
 export const cookieMap: CookieMap = new Map();
 
 const cookies: Record<string, Map<string, CookieCloudQueryParam>> = directoryImport({
-    targetDirectoryPath: path.join(__dirname, './cookies'),
+    targetDirectoryPath: path.join('/app/lib/routes/cookiecloud/', './cookies'),
     importPattern: /\.json$/,
 }) as typeof cookies;
 

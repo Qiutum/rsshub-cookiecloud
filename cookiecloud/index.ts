@@ -4,7 +4,7 @@ import { Route } from '@/types';
 import { config as RSSHubConfig } from '@/config';
 
 const _env = process.env;
-const _config = ('COOKIE_CLOUD_HOST' in _env && 'COOKIE_CLOUD_UUID' in _env && 'COOKIE_CLOUD_PASSWORD' in _env) ? {
+export const _config = ('COOKIE_CLOUD_HOST' in _env && 'COOKIE_CLOUD_UUID' in _env && 'COOKIE_CLOUD_PASSWORD' in _env) ? {
     host: _env.COOKIE_CLOUD_HOST,
     uuid: _env.COOKIE_CLOUD_UUID,
     password: _env.COOKIE_CLOUD_PASSWORD,
@@ -77,8 +77,6 @@ async function handler(ctx) {
     };
 }
 
-if (process.env.NODE_ENV === 'production') {
-    setTimeout(async () => await createCookieCloudSyncJob(_config, false), 10);
-}
+setTimeout(async () => await createCookieCloudSyncJob(_config, false), 10);
 
 logger.info('CookieCloud loaded.');
